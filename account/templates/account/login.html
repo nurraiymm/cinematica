@@ -1,0 +1,32 @@
+{% extends 'includes/base_auth.html' %}
+{% load static %}
+{% block title %}Вход{% endblock title %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+{% block body %}
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class ="card">
+        <div class="card-body">
+          <h3 class="card-title"> Вход на сайт </h3>
+          <form method="post">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="username-input"> Имя пользователя: </label>
+                <input type="text", class="form-control" name="username" id="username-input" placeholder="Введите имя пользователя" required>
+              </div>
+              <div class="form-group">
+                <label for="password-input">Пароль</label>
+                <input type="text", class="form-control" name="password" id="password-input" placeholder="Введите пароль" required>
+              </div>
+            <button type="sumbit" class="btn btn-success"> Войти </button>
+          </form>
+        </div>
+        <div class="card-footer text -center">
+          Вы ещё не зарегистрированы? Пройдите  <a href="{% url 'signup' %}">Регистрацию</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock body %}
